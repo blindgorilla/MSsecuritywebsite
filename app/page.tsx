@@ -92,26 +92,31 @@ const divisions = [
     title: "Cargo Vessel Security",
     description: "Seal inspections, deck patrols, cargo monitoring.",
     image: "/images/cargo-vessel-security.jpg",
+    slug: "cargo-vessel-security",
   },
   {
     title: "High Risk Armed Deployments",
     description: "Security teams deployed on elevated risk maritime routes.",
     image: "/images/armed-deployments.jpg",
+    slug: "high-risk-armed-deployments",
   },
   {
-    title: "Bridge & Technical Monitoring",
-    description: "24/7 radar surveillance and navigation monitoring.",
+    title: "Vessel CCTV Security",
+    description: "24/7 CCTV surveillance and technical security monitoring.",
     image: "/images/bridge-monitoring.jpg",
+    slug: "vessel-cctv-security",
   },
   {
     title: "Port & Terminal Security",
     description: "ISPS compliant port operations and gangway security.",
     image: "/images/port-security.jpg",
+    slug: "port-terminal-security",
   },
   {
     title: "Ferry & Passenger Security",
     description: "Passenger terminal security and onboard ferry operations.",
     image: "/images/ferry-passenger-security.jpg",
+    slug: "ferry-passenger-security",
   },
 ];
 
@@ -216,6 +221,7 @@ export default function MSSecurityGroupPage() {
           <nav className="hidden gap-8 text-sm text-[#334155] lg:flex">
             <a href="#" className="font-medium text-[#1B6CA8]">Home</a>
             <a href="#news" className="transition hover:text-[#1B6CA8]">News</a>
+            <a href="/services" className="transition hover:text-[#1B6CA8]">Services</a>
             <a href="#operations" className="transition hover:text-[#1B6CA8]">Operations</a>
             <a href="#careers" className="transition hover:text-[#1B6CA8]">Careers</a>
             <a href="/compliance" className="transition hover:text-[#1B6CA8]">Compliance</a>
@@ -432,7 +438,7 @@ export default function MSSecurityGroupPage() {
                   <CardContent className="p-5">
                     <h3 className="font-semibold text-[#0D1B2A]">{division.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#334155]">{division.description}</p>
-                    <a href="#" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1B6CA8] transition-colors hover:text-[#0D1B2A]">
+                    <a href={`/services/${division.slug}`} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1B6CA8] transition-colors hover:text-[#0D1B2A]">
                       Learn More <ArrowRight className="h-4 w-4" />
                     </a>
                   </CardContent>
@@ -455,7 +461,7 @@ export default function MSSecurityGroupPage() {
                   <CardContent className="p-5">
                     <h3 className="font-semibold text-[#0D1B2A]">{division.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#334155]">{division.description}</p>
-                    <a href="#" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1B6CA8] transition-colors hover:text-[#0D1B2A]">
+                    <a href={`/services/${division.slug}`} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1B6CA8] transition-colors hover:text-[#0D1B2A]">
                       Learn More <ArrowRight className="h-4 w-4" />
                     </a>
                   </CardContent>
