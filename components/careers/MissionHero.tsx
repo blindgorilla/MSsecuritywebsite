@@ -75,14 +75,16 @@ const MISSIONS: Mission[] = [
 interface MissionHeroProps {
   applyHref?: string
   requirementsHref?: string
-  /** Hide the hero's own logo row when it renders beneath the site header. */
-  showBrandBar?: boolean
+  /** Render beneath a fixed site header: the hero runs edge-to-edge behind
+      it, gains top clearance and a readability scrim, and drops its own
+      logo row and tagline. */
+  embedded?: boolean
 }
 
 export default function MissionHero({
   applyHref = '/#apply',
   requirementsHref = '/#careers',
-  showBrandBar = true,
+  embedded = false,
 }: MissionHeroProps) {
   const [activeScene, setActiveScene] = useState<SceneId>('cruise')
 
@@ -136,7 +138,10 @@ export default function MissionHero({
   }, [])
 
   return (
-    <section ref={heroRef} className={styles.hero}>
+    <section
+      ref={heroRef}
+      className={`${styles.hero} ${embedded ? styles.heroEmbedded : ''}`}
+    >
       {/* Cinematic scene layers — only the active one is visible */}
       <div ref={scenesRef} className={styles.scenes} aria-hidden="true">
         {MISSIONS.map((mission) => (
@@ -164,25 +169,26 @@ export default function MissionHero({
       <div className={styles.shimmer} aria-hidden="true" />
       <div className={styles.vignette} aria-hidden="true" />
       <div className={styles.grain} aria-hidden="true" />
+      {embedded && <div className={styles.topScrim} aria-hidden="true" />}
 
       <div>
         <div className={styles.bar}>
-          {showBrandBar ? (
-            <div className={styles.brand}>
-              <Image
-                src="/careers/logo-white.png"
-                alt="MS Security Group"
-                width={122}
-                height={120}
-                className={styles.brandMark}
-                priority
-              />
-              <div className={styles.brandName}>MS&nbsp;SECURITY&nbsp;GROUP</div>
-            </div>
-          ) : (
-            <div />
+          {!embedded && (
+            <>
+              <div className={styles.brand}>
+                <Image
+                  src="/careers/logo-white.png"
+                  alt="MS Security Group"
+                  width={122}
+                  height={120}
+                  className={styles.brandMark}
+                  priority
+                />
+                <div className={styles.brandName}>MS&nbsp;SECURITY&nbsp;GROUP</div>
+              </div>
+              <div className={styles.barRight}>CAREERS · MARITIME OPERATIONS</div>
+            </>
           )}
-          <div className={styles.barRight}>CAREERS · MARITIME OPERATIONS</div>
         </div>
 
         <div ref={copyRef} className={styles.copy}>

@@ -28,6 +28,12 @@
   color: var(--ink);
 }
 
+/* Embedded beneath the fixed site header: clear its 73px height so copy
+   starts below it while the scene layers still run edge-to-edge. */
+.heroEmbedded {
+  padding-top: 73px;
+}
+
 /* =============== cinematic scene layers =============== */
 .scenes {
   position: absolute;
@@ -118,6 +124,17 @@
       rgba(4, 8, 16, 0.18) 34%,
       transparent 55%
     );
+}
+/* keeps white nav links readable over the brighter scenes */
+.topScrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(4, 8, 16, 0.45), transparent 120px);
 }
 .grain {
   position: absolute;

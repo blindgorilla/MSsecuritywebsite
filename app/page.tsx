@@ -192,40 +192,91 @@ const faqs = [
 
 export default function MSSecurityGroupPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navLink = `transition-colors duration-[250ms] focus-visible:outline-2 focus-visible:outline-offset-4 ${
+    scrolled
+      ? "text-[#334155] hover:text-[#1B6CA8] focus-visible:outline-[#1B6CA8]"
+      : "text-white/85 hover:text-white focus-visible:outline-white"
+  }`;
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-[#E2E8F0] bg-white/95 backdrop-blur-sm">
+      {/* Header — transparent over the dark hero, solid white once scrolled */}
+      <header
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-[250ms] ${
+          scrolled
+            ? "border-[#E2E8F0] bg-white/95 backdrop-blur-sm"
+            : "border-transparent bg-transparent"
+        }`}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-          <Image
-            src="/images/ms-security-logo.png"
-            alt="MS Security Group"
-            width={150}
-            height={40}
-            className="brightness-0"
-            style={{ height: "40px", width: "auto" }}
-            priority
-          />
+          <div className="relative h-10 w-10">
+            <Image
+              src="/images/ms-security-logo.png"
+              alt="MS Security Group"
+              width={150}
+              height={40}
+              className={`absolute left-0 top-0 brightness-0 transition-opacity duration-[250ms] ${
+                scrolled ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ height: "40px", width: "auto" }}
+              priority
+            />
+            <Image
+              src="/careers/logo-white.png"
+              alt=""
+              aria-hidden="true"
+              width={122}
+              height={120}
+              className={`absolute left-0 top-0 transition-opacity duration-[250ms] ${
+                scrolled ? "opacity-0" : "opacity-100"
+              }`}
+              style={{ height: "40px", width: "auto" }}
+              priority
+            />
+          </div>
 
-          <nav className="hidden gap-8 text-sm text-[#334155] lg:flex">
-            <a href="#" className="font-medium text-[#1B6CA8]">Home</a>
-            <a href="#news" className="transition hover:text-[#1B6CA8]">News</a>
-            <a href="/services" className="transition hover:text-[#1B6CA8]">Services</a>
-            <a href="#operations" className="transition hover:text-[#1B6CA8]">Operations</a>
-            <a href="#careers" className="transition hover:text-[#1B6CA8]">Careers</a>
-            <a href="/compliance" className="transition hover:text-[#1B6CA8]">Compliance</a>
-            <a href="#apply" className="transition hover:text-[#1B6CA8]">Apply</a>
+          <nav className="hidden gap-8 text-sm lg:flex">
+            <a
+              href="#"
+              className={`font-medium transition-colors duration-[250ms] focus-visible:outline-2 focus-visible:outline-offset-4 ${
+                scrolled
+                  ? "text-[#1B6CA8] focus-visible:outline-[#1B6CA8]"
+                  : "text-white focus-visible:outline-white"
+              }`}
+            >
+              Home
+            </a>
+            <a href="#news" className={navLink}>News</a>
+            <a href="/services" className={navLink}>Services</a>
+            <a href="#operations" className={navLink}>Operations</a>
+            <a href="#careers" className={navLink}>Careers</a>
+            <a href="/compliance" className={navLink}>Compliance</a>
+            <a href="#apply" className={navLink}>Apply</a>
           </nav>
 
-          <Button className="rounded-lg bg-[#0D1B2A] px-6 text-white hover:bg-[#1B6CA8]">
+          <Button
+            className={`rounded-lg border px-6 text-white transition-colors duration-[250ms] ${
+              scrolled
+                ? "border-transparent bg-[#0D1B2A] hover:bg-[#1B6CA8]"
+                : "border-[rgba(255,255,255,0.35)] bg-transparent hover:bg-white/10"
+            }`}
+          >
             Apply Now
           </Button>
         </div>
       </header>
 
       {/* Hero Section - Choose Your Mission */}
-      <MissionHero showBrandBar={false} />
+      <MissionHero embedded />
 
       {/* Accreditations Section */}
       <section className="bg-white py-10">
