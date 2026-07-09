@@ -46,7 +46,7 @@ const MISSIONS: Mission[] = [
   {
     id: 'piracy',
     title: 'Anti-Piracy Operations',
-    description: 'Front-line transits across the Gulf of Aden and Indian Ocean.',
+    description: 'Hardened transits across the Gulf of Aden and Indian Ocean.',
     image: '/careers/scene-piracy.jpg',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">

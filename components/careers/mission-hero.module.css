@@ -4,8 +4,8 @@
   --navy: #0a1626;
   --navy-deep: #060c18;
   --steel: #31465f;
-  --gold: #dfb264;
-  --gold-deep: #c2914a;
+  --gold: #6fb3e0;
+  --gold-deep: #1b6ca8;
   --ink: #f2f0ea;
   --ink-dim: #b9c2cf;
   --glass: rgba(10, 22, 40, 0.42);
@@ -157,7 +157,7 @@
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.2em;
-  color: rgba(223, 178, 100, 0.85);
+  color: rgba(111, 179, 224, 0.85);
 }
 
 /* =============== copy =============== */
@@ -230,12 +230,12 @@
   outline-offset: 3px;
 }
 .btnGold {
-  background: linear-gradient(160deg, #e7bc6e 0%, #c9974a 100%);
-  color: #1a1608;
-  box-shadow: 0 6px 26px rgba(223, 178, 100, 0.22);
+  background: linear-gradient(160deg, #2e86c6 0%, #16588c 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 26px rgba(27, 108, 168, 0.32);
 }
 .btnGold:hover {
-  box-shadow: 0 10px 34px rgba(223, 178, 100, 0.38);
+  box-shadow: 0 10px 34px rgba(27, 108, 168, 0.48);
 }
 .btnGold::after {
   content: "";
@@ -263,7 +263,7 @@
   backdrop-filter: blur(6px);
 }
 .btnGhost:hover {
-  border-color: rgba(223, 178, 100, 0.6);
+  border-color: rgba(111, 179, 224, 0.6);
 }
 @keyframes rise {
   from {
@@ -314,7 +314,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(223, 178, 100, 0),
+    rgba(111, 179, 224, 0),
     transparent
   );
   transition: background 0.4s;
@@ -322,23 +322,23 @@
 .card:hover,
 .cardActive {
   transform: translateY(-7px);
-  border-color: rgba(223, 178, 100, 0.45);
+  border-color: rgba(111, 179, 224, 0.45);
   background: rgba(12, 26, 46, 0.55);
-  box-shadow: 0 18px 46px rgba(4, 8, 16, 0.5), 0 0 32px rgba(223, 178, 100, 0.1);
+  box-shadow: 0 18px 46px rgba(4, 8, 16, 0.5), 0 0 32px rgba(111, 179, 224, 0.1);
 }
 .card:hover::before,
 .cardActive::before {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(223, 178, 100, 0.8),
+    rgba(111, 179, 224, 0.8),
     transparent
   );
 }
 .card:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
-  border-color: rgba(223, 178, 100, 0.45);
+  border-color: rgba(111, 179, 224, 0.45);
 }
 .icon {
   width: 42px;
@@ -347,15 +347,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(223, 178, 100, 0.08);
-  border: 1px solid rgba(223, 178, 100, 0.25);
+  background: rgba(111, 179, 224, 0.08);
+  border: 1px solid rgba(111, 179, 224, 0.25);
   margin-bottom: 16px;
   transition: background 0.3s, border-color 0.3s;
 }
 .card:hover .icon,
 .cardActive .icon {
-  background: rgba(223, 178, 100, 0.16);
-  border-color: rgba(223, 178, 100, 0.55);
+  background: rgba(111, 179, 224, 0.16);
+  border-color: rgba(111, 179, 224, 0.55);
 }
 .icon svg {
   width: 20px;
@@ -382,12 +382,12 @@
   font-family: var(--font-mono);
   font-size: 9.5px;
   letter-spacing: 0.2em;
-  color: rgba(223, 178, 100, 0);
+  color: rgba(111, 179, 224, 0);
   transition: color 0.35s;
 }
 .card:hover .go,
 .cardActive .go {
-  color: rgba(223, 178, 100, 0.9);
+  color: rgba(111, 179, 224, 0.9);
 }
 
 /* =============== responsive =============== */
