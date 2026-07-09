@@ -72,7 +72,18 @@ const MISSIONS: Mission[] = [
   },
 ]
 
-export default function MissionHero() {
+interface MissionHeroProps {
+  applyHref?: string
+  requirementsHref?: string
+  /** Hide the hero's own logo row when it renders beneath the site header. */
+  showBrandBar?: boolean
+}
+
+export default function MissionHero({
+  applyHref = '/#apply',
+  requirementsHref = '/#careers',
+  showBrandBar = true,
+}: MissionHeroProps) {
   const [activeScene, setActiveScene] = useState<SceneId>('cruise')
 
   const heroRef = useRef<HTMLElement>(null)
@@ -156,17 +167,21 @@ export default function MissionHero() {
 
       <div>
         <div className={styles.bar}>
-          <div className={styles.brand}>
-            <Image
-              src="/careers/logo-white.png"
-              alt="MS Security Group"
-              width={122}
-              height={120}
-              className={styles.brandMark}
-              priority
-            />
-            <div className={styles.brandName}>MS&nbsp;SECURITY&nbsp;GROUP</div>
-          </div>
+          {showBrandBar ? (
+            <div className={styles.brand}>
+              <Image
+                src="/careers/logo-white.png"
+                alt="MS Security Group"
+                width={122}
+                height={120}
+                className={styles.brandMark}
+                priority
+              />
+              <div className={styles.brandName}>MS&nbsp;SECURITY&nbsp;GROUP</div>
+            </div>
+          ) : (
+            <div />
+          )}
           <div className={styles.barRight}>CAREERS · MARITIME OPERATIONS</div>
         </div>
 
@@ -182,11 +197,11 @@ export default function MissionHero() {
             ports, and crews across the world.
           </p>
           <div className={styles.ctas}>
-            <a href="#apply" className={`${styles.btn} ${styles.btnGold}`}>
+            <a href={applyHref} className={`${styles.btn} ${styles.btnGold}`}>
               Apply Now
             </a>
             <a
-              href="#requirements"
+              href={requirementsHref}
               className={`${styles.btn} ${styles.btnGhost}`}
             >
               View Requirements
