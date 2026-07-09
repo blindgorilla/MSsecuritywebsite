@@ -1,11 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import {
   Shield,
-  Globe,
-  Users,
   ChevronRight,
   Phone,
   Mail,
@@ -31,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { WorldMapHero } from "@/components/world-map-hero";
+import MissionHero from "@/components/careers/MissionHero";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 // Scroll animation wrapper component
@@ -72,13 +69,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
-const trustBadges = [
-  { icon: Globe, label: "Global Coverage" },
-  { icon: Users, label: "Elite Operatives" },
-  { icon: Shield, label: "IMO Compliant" },
-  { icon: Award, label: "Trusted by Industry Leaders" },
-];
 
 const stats = [
   { value: "40+", label: "Years Maritime Security" },
@@ -234,113 +224,8 @@ export default function MSSecurityGroupPage() {
         </div>
       </header>
 
-      {/* Hero Section - Premium Full-Bleed */}
-      <section className="relative min-h-screen overflow-hidden" style={{ background: "linear-gradient(135deg, #F4F7FA 0%, #E8EEF5 40%, #F0F4F8 100%)" }}>
-        {/* Layer 1: Animated World Map */}
-        <WorldMapHero />
-
-        {/* Layer 2: Content */}
-        <div className="relative z-10 w-full lg:w-[52%]" style={{ padding: "60px 50px 100px 70px" }}>
-          <div className="flex min-h-[calc(100vh-160px)] flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              {/* Top Label with accent line */}
-              <div className="flex items-center gap-3">
-                <div className="h-px w-9 bg-[#1B6CA8]" />
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#1B6CA8]">
-                  Est. 1986 · Limassol, Cyprus
-                </span>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="mt-6 text-4xl font-black leading-[1.05] tracking-tight text-[#0D1B2A] md:text-5xl lg:text-6xl xl:text-7xl">
-                Professional
-                <br />
-                Maritime
-                <br />
-                <span className="text-[#1B6CA8]">Security Services</span>
-              </h1>
-
-              {/* Subtext */}
-              <p className="mt-8 max-w-lg text-base leading-relaxed text-[#475569] md:text-lg">
-                With over 40 years of experience, MS Security Group provides elite security teams for commercial vessels, ferry operators, and international shipping companies worldwide.
-              </p>
-
-              {/* Stats Row */}
-              <div className="mt-12 flex flex-wrap gap-6 md:gap-8">
-                <div className="pt-4" style={{ borderTop: "2px solid #1B6CA8" }}>
-                  <div className="text-3xl font-bold text-[#0D1B2A] md:text-4xl">40+</div>
-                  <div className="mt-1 text-sm text-[#64748B]">Years Experience</div>
-                </div>
-                <div className="h-20 w-px bg-[#CBD5E1]" />
-                <div className="pt-4" style={{ borderTop: "2px solid #1B6CA8" }}>
-                  <div className="text-3xl font-bold text-[#0D1B2A] md:text-4xl">1500+</div>
-                  <div className="mt-1 text-sm text-[#64748B]">Security Personnel</div>
-                </div>
-                <div className="h-20 w-px bg-[#CBD5E1]" />
-                <div className="pt-4" style={{ borderTop: "2px solid #1B6CA8" }}>
-                  <div className="text-3xl font-bold text-[#0D1B2A] md:text-4xl">24/7</div>
-                  <div className="mt-1 text-sm text-[#64748B]">Global Coverage</div>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-                <Button size="lg" className="rounded-lg bg-[#0D1B2A] px-8 text-white hover:bg-[#1B6CA8]">
-                  Join Our Team
-                  <ChevronRight className="ml-1 h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-lg border-[#0D1B2A] bg-transparent text-[#0D1B2A] hover:bg-[#0D1B2A] hover:text-white"
-                >
-                  Learn More
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-[68px] left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center lg:flex">
-          <span className="mb-2 font-mono text-[8px] uppercase tracking-widest text-[#1B6CA8]">Scroll</span>
-          <motion.div
-            className="h-8 w-px bg-[#1B6CA8]"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 1.2,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        </div>
-
-        {/* Layer 3: Bottom Trust Strip */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 z-10 h-[50px] border-t" 
-          style={{ 
-            background: "rgba(13, 27, 42, 0.06)",
-            borderColor: "rgba(27, 108, 168, 0.2)"
-          }}
-        >
-          <div className="mx-auto flex h-full max-w-7xl items-center justify-center px-6 lg:px-8">
-            <div className="flex items-center gap-6 md:gap-10">
-              {trustBadges.map((badge, index) => (
-                <div key={badge.label} className="flex items-center gap-2">
-                  {index > 0 && <div className="mr-4 hidden h-3 w-px bg-[#CBD5E1] lg:block" />}
-                  <div className="h-[5px] w-[5px] rounded-full bg-[#1B6CA8]" />
-                  <span className="font-mono text-[10px] uppercase tracking-wide text-[#0D1B2A]">{badge.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section - Choose Your Mission */}
+      <MissionHero showBrandBar={false} />
 
       {/* Accreditations Section */}
       <section className="bg-white py-10">
