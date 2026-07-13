@@ -76,8 +76,7 @@ interface MissionHeroProps {
   applyHref?: string
   requirementsHref?: string
   /** Render beneath a fixed site header: the hero runs edge-to-edge behind
-      it, gains top clearance and a readability scrim, and drops its own
-      logo row and tagline. */
+      it, gains top clearance, and drops its own logo row and tagline. */
   embedded?: boolean
 }
 
@@ -166,10 +165,8 @@ export default function MissionHero({
         ))}
       </div>
 
-      <div className={styles.shimmer} aria-hidden="true" />
-      <div className={styles.vignette} aria-hidden="true" />
-      <div className={styles.grain} aria-hidden="true" />
-      {embedded && <div className={styles.topScrim} aria-hidden="true" />}
+      <div className={styles.leftScrim} aria-hidden="true" />
+      <div className={styles.bottomFade} aria-hidden="true" />
 
       <div>
         <div className={styles.bar}>
@@ -177,10 +174,10 @@ export default function MissionHero({
             <>
               <div className={styles.brand}>
                 <Image
-                  src="/careers/logo-white.png"
+                  src="/images/ms-security-logo.png"
                   alt="MS Security Group"
-                  width={122}
-                  height={120}
+                  width={150}
+                  height={40}
                   className={styles.brandMark}
                   priority
                 />
