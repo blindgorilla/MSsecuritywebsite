@@ -201,15 +201,16 @@ export default function MSSecurityGroupPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLink = `transition-colors duration-[250ms] focus-visible:outline-2 focus-visible:outline-offset-4 ${
+  const navLink = `transition-colors duration-[250ms] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1B6CA8] ${
     scrolled
-      ? "text-[#334155] hover:text-[#1B6CA8] focus-visible:outline-[#1B6CA8]"
-      : "text-white/85 hover:text-white focus-visible:outline-white"
+      ? "text-[#334155] hover:text-[#1B6CA8]"
+      : "text-[#16233D] hover:text-[#1B6CA8]"
   }`;
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      {/* Header — transparent over the dark hero, solid white once scrolled */}
+      {/* Header — transparent over the light hero, solid white once scrolled;
+          only the background and border change between states */}
       <header
         className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-[250ms] ${
           scrolled
@@ -218,40 +219,20 @@ export default function MSSecurityGroupPage() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-          <div className="relative h-10 w-10">
-            <Image
-              src="/images/ms-security-logo.png"
-              alt="MS Security Group"
-              width={150}
-              height={40}
-              className={`absolute left-0 top-0 brightness-0 transition-opacity duration-[250ms] ${
-                scrolled ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ height: "40px", width: "auto" }}
-              priority
-            />
-            <Image
-              src="/careers/logo-white.png"
-              alt=""
-              aria-hidden="true"
-              width={122}
-              height={120}
-              className={`absolute left-0 top-0 transition-opacity duration-[250ms] ${
-                scrolled ? "opacity-0" : "opacity-100"
-              }`}
-              style={{ height: "40px", width: "auto" }}
-              priority
-            />
-          </div>
+          <Image
+            src="/images/ms-security-logo.png"
+            alt="MS Security Group"
+            width={150}
+            height={40}
+            className="brightness-0"
+            style={{ height: "40px", width: "auto" }}
+            priority
+          />
 
           <nav className="hidden gap-8 text-sm lg:flex">
             <a
               href="#"
-              className={`font-medium transition-colors duration-[250ms] focus-visible:outline-2 focus-visible:outline-offset-4 ${
-                scrolled
-                  ? "text-[#1B6CA8] focus-visible:outline-[#1B6CA8]"
-                  : "text-white focus-visible:outline-white"
-              }`}
+              className="font-medium text-[#1B6CA8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1B6CA8]"
             >
               Home
             </a>
@@ -263,13 +244,7 @@ export default function MSSecurityGroupPage() {
             <a href="#apply" className={navLink}>Apply</a>
           </nav>
 
-          <Button
-            className={`rounded-lg border px-6 text-white transition-colors duration-[250ms] ${
-              scrolled
-                ? "border-transparent bg-[#0D1B2A] hover:bg-[#1B6CA8]"
-                : "border-[rgba(255,255,255,0.35)] bg-transparent hover:bg-white/10"
-            }`}
-          >
+          <Button className="rounded-lg border border-transparent bg-[#0D1B2A] px-6 text-white transition-colors duration-[250ms] hover:bg-[#1B6CA8]">
             Apply Now
           </Button>
         </div>
